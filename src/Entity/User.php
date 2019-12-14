@@ -58,6 +58,15 @@ class User
         return $this->exps;
     }
 
+     /**
+     * @return Collection|Exp[]
+     */
+    public function getExp(): Collection
+    {
+        return $this->getExps();
+    }
+
+
     public function addExp(Exp $exp): self
     {
         if (!$this->exps->contains($exp)) {
@@ -80,4 +89,15 @@ class User
 
         return $this;
     }
+
+    /**
+     * toString
+     * @return string
+     */
+ 
+    public function __toString()
+    {
+        return $this->fullname;
+    }
+
 }
