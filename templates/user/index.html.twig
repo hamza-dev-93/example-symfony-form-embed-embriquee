@@ -11,6 +11,7 @@
                 <th>Id</th>
                 <th>Fullname</th>
                 <th>actions</th>
+                <th>editer </th>
             </tr>
         </thead>
         <tbody>
@@ -19,7 +20,13 @@
                 <td>{{ user.id }}</td>
                 <td>{{ user.fullname }}</td>
                 <td>
-                    <a href="{{ path('user_show', {'id': user.id}) }}" class="btn btn-success" >show</a>
+                    <form method="post" action="{{ path('user_delete', {'id': user.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+    <button class="btn btn-danger">Supprimer</button>
+</form> 
+</td>
+<td>
                     <a href="{{ path('user_edit', {'id': user.id}) }}" class="btn btn-success">edit</a>
                 </td>
             </tr>

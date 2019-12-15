@@ -76,6 +76,7 @@ function addRemoveButton ($panel) {
         $(e.target).parents('.panel').slideUp(1000, function () {
             $(this).remove();
         })
+        
     });
     // append the footer to the panel
     $panel.append($panelFooter);
