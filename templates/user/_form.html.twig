@@ -1,5 +1,18 @@
 {{ form_start(form) }}
 
-    {{ form_widget(form) }}
+    {{ form_row(form.fullname) }}
+
+<div class="col-sm-8 col-sm-offset-2" id="exp_list" data-prototype="{{ form_widget(form.exp.vars.prototype)|e('html_attr') }}" >
+    {% for row in form.exp %}
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                    <h3 class="panel-title"> {{ row.vars.value.title }} </h3>
+            </div>
+            <div class="panel-body">
+                {{ form_row(row) }}
+            </div>
+       </div>
+    {% endfor %}
+</div>
    
 {{ form_end(form) }}

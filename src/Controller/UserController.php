@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
-use App\Form\ExpType;
+use App\Entity\Exp;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,6 +32,16 @@ class UserController extends AbstractController
     public function new(Request $request): Response
     {
         $user = new User();
+
+        $exp =new Exp();
+        // $exp->setTitle('Developper');
+        // $exp->setLocation('Paris');
+        // $exp->setDateFrom(new \DateTime());
+        // $exp->setDateTo(new \DateTime());
+        // $exp->setUsers($user);
+
+        $user->addExp($exp);
+
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
